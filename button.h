@@ -1,27 +1,31 @@
 
-#ifndef __ECP_BUTTON__
-#define __ECP_BUTTON__
+#ifndef __ECP_Button__
+#define __ECP_Button__
 
 class Bounce;
 
 class Button
 {
-private:
-    int _key;
-    int _pin;
-
-    Bounce* _bounce;
-    
 public:
     Button( int pin, int key );
-    ~Button();
+    virtual ~Button();
 
-    void Update();
+    virtual void Update();
+
+protected:
+    virtual void OnPressed( int key ) = 0;
+    virtual void OnReleased( int key ) = 0;
 
 private:
-    void Hold();
+    void Poll();
+
     void Debug();
+    
+    Bounce* _bounce;
+
+    int _key;
+    int _pin;
 };
 
-#endif // __ECP_BUTTON__
+#endif // __ECP_Button__
 

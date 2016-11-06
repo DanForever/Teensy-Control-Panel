@@ -1,4 +1,5 @@
 #include "button.h"
+
 #include "WProgram.h"
 #include <Bounce.h>
 
@@ -19,19 +20,19 @@ Button::~Button()
 void Button::Update()
 {
     _bounce->update();
-    Hold();
+    Poll();
     Debug();
 }
 
-void Button::Hold()
+void Button::Poll()
 {
     if( _bounce->fallingEdge() )
     {
-        Keyboard.press( _key );
+        OnPressed( _key );
     }
     else if( _bounce->risingEdge() )
     {
-        Keyboard.release( _key );
+        OnReleased( _key );
     }
 }
 

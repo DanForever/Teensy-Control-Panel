@@ -1,16 +1,17 @@
+#include "holdButton.h"
+#include "toggleButton.h"
 
-#include "button.h"
-
-#define NUM_BUTTONS 4
+#define NUM_BUTTONS 5
 
 Button* buttons[ NUM_BUTTONS ];
 
 void setup()
 {
-    buttons[ 0 ] = new Button( 3, KEY_HOME );
-    buttons[ 1 ] = new Button( 2, KEY_J );
-    buttons[ 2 ] = new Button( 1, KEY_END );
-    buttons[ 3 ] = new Button( 4, KEY_B );
+    buttons[ 0 ] = new HoldButton( 3, KEY_HOME );
+    buttons[ 1 ] = new HoldButton( 2, KEY_J );
+    buttons[ 2 ] = new HoldButton( 1, KEY_END );
+    buttons[ 3 ] = new HoldButton( 4, KEY_B );
+    buttons[ 4 ] = new ToggleButton( 6, KEY_C );
 }
 
 void loop()
